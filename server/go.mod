@@ -3,6 +3,7 @@ module server
 go 1.16
 
 require (
+	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/wenlng/go-captcha v1.2.5
-	golang.org/x/image v0.0.0-20211028202545-6944b10bf410 // indirect
+	golang.org/x/image v0.0.0-20220617043117-41969df76e82 // indirect
 )
