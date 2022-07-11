@@ -13,13 +13,13 @@ var (
 	bkImgCache [][]byte //缓存滑块模板图片
 )
 
-func LoadBackgroudImages() (err error){
-	bgImgCache, err = loadImages("./examples/bg")
+func LoadBackgroudImages(path string) (err error){
+	bgImgCache, err = loadImages(path)
 	return
 }
 
-func LoadBlockImages() (err error) {
-	bkImgCache, err = loadImages("./examples/block")
+func LoadBlockImages(path string) (err error) {
+	bkImgCache, err = loadImages(path)
 	return
 }
 

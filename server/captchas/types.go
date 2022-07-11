@@ -1,5 +1,10 @@
 package captchas
 
+import (
+	"math/rand"
+	"time"
+)
+
 // Point 随机生成的抠图位置
 type Point struct {
 	X int
@@ -12,3 +17,6 @@ type CutoutRet struct {
 	BackgroudImg string
 	BlockImg     string
 }
+
+
+var r = rand.New(rand.NewSource(time.Now().UnixNano()))

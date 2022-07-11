@@ -11,9 +11,9 @@ import (
 
 func Run() (*CutoutRet, error) {
 	// 加载图片到缓存
-	LoadBackgroudImages()
+	LoadBackgroudImages("./examples/b")
 	// 加载背景图到缓存
-	LoadBlockImages()
+	LoadBlockImages("./examples/block")
 	bgImage, err := randBackgroudImage()
 	if err != nil {
 		return nil, err
@@ -57,20 +57,14 @@ func run(bgImage, bkImage *ImageBuf) (*CutoutRet, error) {
 // randPoint 随机生成抠图位置
 func randPoint(bgWidth, bgHeight, bkWidth int) *Point {
 	wDiff := bgWidth - bkWidth
-	hDiff := bgHeight - bkWidth
+	//hDiff := bgHeight - bkWidth
 	var x, y int
 	if wDiff <= 0 {
 		x = 5
 	} else {
 		x = r.Intn(wDiff-100) + 100
 	}
-	if hDiff <= 0 {
-		//y = 5
-		y = 0
-	} else {
-		y =0
-		//y = r.Intn(hDiff) + 5
-	}
+	y = 0
 	return &Point{x, y}
 }
 
