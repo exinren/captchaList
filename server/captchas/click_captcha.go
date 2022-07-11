@@ -3,7 +3,7 @@ package captchas
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/wenlng/go-captcha/captcha"
+	caps "github.com/wenlng/go-captcha/captcha"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -32,7 +32,7 @@ func Demo(w http.ResponseWriter, r *http.Request) {
  * @param r
  */
 func GetCaptchaData(w http.ResponseWriter, r *http.Request) {
-	capt := captcha.GetCaptcha()
+	capt := caps.GetCaptcha()
 
 	dots, b64, tb64, key, err := capt.Generate()
 	if err != nil {
@@ -83,7 +83,7 @@ func CheckCaptcha(w http.ResponseWriter, r *http.Request) {
 	}
 	src := strings.Split(dots, ",")
 
-	var dct map[int]captcha.CharDot
+	var dct map[int]caps.CharDot
 	if err := json.Unmarshal([]byte(cacheData), &dct); err != nil {
 		bt, _ := json.Marshal(map[string]interface{}{
 			"code":    code,
@@ -106,7 +106,7 @@ func CheckCaptcha(w http.ResponseWriter, r *http.Request) {
 
 			// 校验点的位置,在原有的区域上添加额外边距进行扩张计算区域,不推荐设置过大的padding
 			// 例如：文本的宽和高为30，校验范围x为10-40，y为15-45，此时扩充5像素后校验范围宽和高为40，则校验范围x为5-45，位置y为10-50
-			chkRet = captcha.CheckPointDistWithPadding(int64(sx), int64(sy), int64(dot.Dx), int64(dot.Dy), int64(dot.Width), int64(dot.Height), 5)
+			chkRet = caps.CheckPointDistWithPadding(int64(sx), int64(sy), int64(dot.Dx), int64(dot.Dy), int64(dot.Width), int64(dot.Height), 5)
 			if !chkRet {
 				break
 			}
