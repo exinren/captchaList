@@ -5,11 +5,12 @@
 import Captcha from "./components/Captcha.vue"
 import { ref } from 'vue'
 import gaming from './abi/gaming.json'
-import Web3 from 'web3/dist/web3.min.js';
+// import Web3 from 'web3/dist/web3.min.js';
+import MoveCaptcha from './components/MoveCaptcha.vue'
 
 // 由于vite删除一些多余的包。无法直接引入web3.js包
 
-const SOL_ADDR = "0x69C1F9B128ab25D46535aD4627007D80b48Ce507";
+// const SOL_ADDR = "0x69C1F9B128ab25D46535aD4627007D80b48Ce507";
 
 // let currentAccount = null;
 // ethereum.request({method: 'eth_requestAccounts'}).then((accounts) => {
@@ -27,31 +28,33 @@ const SOL_ADDR = "0x69C1F9B128ab25D46535aD4627007D80b48Ce507";
 //   }
 // });
 
-let web3 = new Web3(Web3.givenProvider || 'https://evmtestnet.confluxrpc.com/0x69C1F9B128ab25D46535aD4627007D80b48Ce507');
+// let web3 = new Web3(Web3.givenProvider || 'https://evmtestnet.confluxrpc.com/0x69C1F9B128ab25D46535aD4627007D80b48Ce507');
 
-let myContract = new web3.eth.Contract(gaming, SOL_ADDR);
-myContract.methods.getTotalBet().call().then(res => {
-    console.log(res);
-})
+// let myContract = new web3.eth.Contract(gaming, SOL_ADDR);
+// myContract.methods.getTotalBet().call().then(res => {
+//     console.log(res);
+// })
 const input = ref('')
 
-function submit() {
-  // selectedAddress  获取当前用户账号
-  myContract.methods.bet(2).send({from: ethereum.selectedAddress,value: web3.utils.toWei('2', 'ether')}).then((result) =>{
-    console.log(result);
-  }).catch(err => {
-    console.log(err);
-  })
-}
+// function submit() {
+//   // selectedAddress  获取当前用户账号
+//   myContract.methods.bet(2).send({from: ethereum.selectedAddress,value: web3.utils.toWei('2', 'ether')}).then((result) =>{
+//     console.log(result);
+//   }).catch(err => {
+//     console.log(err);
+//   })
+// }
 
-myContract.methods.getNumberOfBets().call().then(res => {
-  console.log(res)
-})
+// myContract.methods.getNumberOfBets().call().then(res => {
+//   console.log(res)
+// })
+
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <Captcha />
+  <MoveCaptcha />
   <!-- <HelloWorld msg="Hello Vue 3 + Vite" /> -->
    <!-- <el-input v-model="input" placeholder="Please input" />
    <el-button type="primary" @click="submit" >提交</el-button> -->

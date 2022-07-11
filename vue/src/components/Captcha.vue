@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <div class="go-captcha-wrap">
       <!-- <GoCaptchaBtn
               class="go-captcha-btn"
@@ -83,7 +83,6 @@
             if (this.$lodash.isEmpty(data)) {
               return
             }
-
             this.captBase64 = data['image_base64'] || ''
             this.captThumbBase64 = data['thumb_base64'] || ''
             this.captKey = data['captcha_key'] || ''
